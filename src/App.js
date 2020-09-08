@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import Topbar from './containers/Topbar/Topbar';
+import MainApp from './containers/App/App';
+import 'antd/dist/antd.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const { Header, Content, Footer } = Layout;
+class App extends Component {
+  render() {
+
+
+
+    return (
+      <Layout className="layout">
+        <Header style={{textAlign: "right"}}>
+          <Menu mode="horizontal" style={{width: "100%", textAlign: "right"}}>
+            <Menu.Item key="1">Lorem</Menu.Item>
+            <Menu.Item key="2">Github</Menu.Item>
+            <Menu.Item key="3">Estudio Media</Menu.Item>
+          </Menu>
+        </Header>
+        <Content style={{ padding: '0 50px' }}>
+          
+          <MainApp />
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+      </Layout>
+    )
+  }
 }
 
 export default App;
