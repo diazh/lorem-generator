@@ -70,7 +70,7 @@ class LoremGenerator extends Component {
     render() {
 
         return (
-            <div>
+            <div style={{ height: "100%"}}>
                 <Row>
                     <Col span={8}></Col>
                     <Col span={8}>

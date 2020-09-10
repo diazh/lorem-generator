@@ -13,7 +13,7 @@ class App extends Component {
 
 
     return (
-      <Layout className="layout">
+      <Layout className="layout" style={{height: "100vh"}}>
         <Header style={{textAlign: "right"}}>
           <Menu mode="horizontal" style={{width: "100%", textAlign: "right"}}>
             <Menu.Item key="1">Lorem</Menu.Item>
