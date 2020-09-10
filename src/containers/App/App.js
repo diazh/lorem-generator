@@ -5,7 +5,11 @@ import LoremGenerator from '../../components/LoremGenerator/LoremGenerator';
 class MainApp extends Component {
     render(){
         return(
-            <LoremGenerator />
+            <div style={{textAlign: "center"}}>
+                <LoremGenerator />
+                
+                
+            </div>
         )
     }
 }

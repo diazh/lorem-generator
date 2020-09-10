@@ -1,0 +1,8 @@
+textarea.selected::selection {
+  background: #d6d6d6;
+  color: black;
+}
+textarea.selected::-moz-selection {
+  background: #d6d6d6;
+  color: black;
+}

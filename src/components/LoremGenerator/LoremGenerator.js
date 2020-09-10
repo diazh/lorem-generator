@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Input, Row, Col, Card, Button, notification } from 'antd';
+import { Input, Row, Col, Card, notification, Button } from 'antd';
+import { CopyOutlined } from '@ant-design/icons';
+import './LoremGenerator.css';
 
+const { TextArea } = Input;
 class LoremGenerator extends Component {
     state = {
         loading: false
@@ -10,24 +13,12 @@ class LoremGenerator extends Component {
 
         let paragraph = this.generateParagraph(words)
         let textContainer = document.getElementById('text_result')
-        textContainer.textContent = paragraph
-
-        var copyTextarea = document.querySelector('#text_result');
-        copyTextarea.focus();
-        copyTextarea.setSelectionRange(0, paragraph.length)
-
-        try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copying text command was ' + msg);
-        } catch (err) {
-            console.log('Oops, unable to copy');
-        }
+        console.log(paragraph)
+        textContainer.value = paragraph
         
-
-
-        // document.getElementById('text_result').append(paragraph)
     }
+
+
     generateParagraph = (numwords) => {
         console.log(numwords.target.value)
         let words = numwords.target.value
@@ -53,7 +44,31 @@ class LoremGenerator extends Component {
         return p;
     }
 
+    copyText = () => {
+
+        var copyTextarea = document.querySelector('#text_result');
+        copyTextarea.focus();
+        copyTextarea.setSelectionRange(0, copyTextarea.value.length)
+
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copying text command was ' + msg);
+
+            notification.success({
+                message: 'Text copied successfully',
+                description: 'The text was copied to clipboard',
+                duration: 2
+            })
+
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+
+    }
+
     render() {
+
         return (
             <div>
                 <Row>
@@ -77,7 +92,14 @@ class LoremGenerator extends Component {
                         <Card id="card_text"
                             loading={this.state.loading}
                         >
-                            <p id="text_result"></p>
+                            <Button
+                                style={{ float: "right" }}
+                                onClick={this.copyText}
+                            >
+                                <CopyOutlined /></Button>
+                            <TextArea id="text_result" className="selected"
+                                rows={8}
+                            />
                         </Card>
                     </Col>
                     <Col span={4}></Col>
