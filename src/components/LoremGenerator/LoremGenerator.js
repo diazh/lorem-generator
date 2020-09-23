@@ -74,7 +74,7 @@ class LoremGenerator extends Component {
                 <Row>
                     <Col span={8}></Col>
                     <Col span={8}>
-                        <h1>Lorem text generator</h1>
+                        <h1 className="coffee-header">Coffee Ipsum</h1>
                         <Input
                             placeholder="Number of words"
                             type="number"

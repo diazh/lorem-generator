@@ -1,0 +1,64 @@
+.coffee-sidebar{
+    background-color: black;
+}
+
+.coffee-menu{
+    margin-top: 3em;
+    background-color: black !important;
+}
+
+.coffee-logo{
+    text-align: center;
+}
+
+.coffee-title{
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+
+}
+
+.coffee-logo > img{
+    margin: 3em;
+}
+
+.coffee-menu{
+    text-align: center;
+    list-style-type: none;
+    padding-left: 0px !important;
+}
+
+.coffee-menu-item{
+    color: white !important;
+    font-size: large;
+    font-weight: 700;
+    padding-bottom: 1em;
+}
+.coffee-menu-item a{
+    color: white;
+}
+.coffee-menu-item{
+    transition: color 0.2s linear 0.1s;
+}
+
+.coffee-menu-item a:hover{
+    color: rgb(24, 177, 93) !important;
+    cursor: pointer;
+}
+
+.coffee-menu-item a:active{
+    color: rgb(24, 177, 93) !important;
+    cursor: pointer;
+}
+
+.ant-layout-sider-trigger{
+    background-color: black !important;
+}
+
+.ant-layout-sider-collapsed .coffee-menu-item .menu-label{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    
+  }

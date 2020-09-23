@@ -6,3 +6,8 @@ textarea.selected::-moz-selection {
   background: #d6d6d6;
   color: black;
 }
+
+.coffee-header{
+  font-size: 32px;
+  
+}
