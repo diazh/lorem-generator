@@ -1,34 +1,51 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Layout, Menu } from 'antd';
-import MainApp from './containers/App/App';
+import React from 'react';
 import 'antd/dist/antd.css';
+import { Layout, Switch } from 'antd';
+import Sidebar from './containers/Sidebar/index'
+import MainApp from './containers/App/App';
 import { BrowserRouter } from 'react-router-dom';
 
-const { Header, Content, Footer } = Layout;
-class App extends Component {
-  render() {
+const { Content } = Layout;
 
+class App extends React.Component {
+    state = {
+        collapsed: false,
+    };
 
+    componentDidMount() {
+        let that = this
+        window.addEventListener("resize", function () {
+            console.log(window.innerWidth)
+            if (window.innerWidth <= 900) {
+                that.setState({ collapsed: true })
+            } else {
+                that.setState({ collapsed: false })
+            }
 
-    return (
-      <Layout className="layout" style={{ height: "100vh" }}>
-        <Header style={{ textAlign: "right" }}>
-          <Menu mode="horizontal" style={{ width: "100%", textAlign: "right" }}>
-            <Menu.Item key="2"><a href="https://github.com/diazh/lorem-generator" target="_blank" rel="noopener noreferrer">Github</a></Menu.Item>
-            <Menu.Item key="3"><a href="http://estudiomediamx.com" target="_blank" rel="noopener noreferrer">Estudio Media</a></Menu.Item>
-          </Menu>
-        </Header>
-        <Content style={{ padding: '0 50px' }}>
-          <BrowserRouter basename="/lorem/">
-            <MainApp />
-          </BrowserRouter>
+        });
+        window.innerWidth <= 900 ? this.setState({ collapsed: true }) : this.setState({ collapsed: false })
+    }
 
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>EstudioMediaMx ©2020</Footer>
-      </Layout>
-    )
-  }
+    onCollapse = collapsed => {
+        this.setState({ collapsed });
+    };
+
+    render() {
+        return (
+            <BrowserRouter>
+                <Layout style={{ minHeight: '100vh' }}>
+                    <Sidebar collapsed={this.state.collapsed} onCollapse={this.onCollapse} />
+                    <Layout className="site-layout">
+                        {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
+                        <Content style={{ margin: '0 16px' }}>
+                            <MainApp />
+                        </Content>
+                        {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
+                    </Layout>
+                </Layout>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;
